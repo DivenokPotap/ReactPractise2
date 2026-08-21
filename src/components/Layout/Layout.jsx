@@ -5,6 +5,7 @@ import { PropTypes } from "prop-types";
 
 import { AuthProvider } from "@/context/AuthContext";
 import { Header } from ".";
+import { Loader } from "../Loader";
 
 export const Layout = () => {
   return (
@@ -14,7 +15,7 @@ export const Layout = () => {
 
         <main>
           <div className="tab-pane fade show active">
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<Loader />}>
               <Outlet />
             </Suspense>
           </div>

@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 import { useSearchParams } from "react-router";
 
+import { ArticlesNotFound } from "@/components/Articles/ArticlesNotFound/ArticlesNotFound";
+
 import { Button } from "../../components/Button";
 import { ArticlesItem } from "../../components/Articles/ArticlesItem";
 import { ArticlesSearch } from "../../components/Articles/ArticlesSearch";
@@ -69,9 +71,7 @@ export const ArticlesPage = () => {
               <ArticlesItem key={article.url} article={article} />
             ))
           ) : (
-            <p>
-              Such article not founded <b>{queryParam} 😢</b>
-            </p>
+            <ArticlesNotFound />
           )}
         </div>
       </div>

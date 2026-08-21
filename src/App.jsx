@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 
 import { Layout } from "./components/Layout";
 import LoginPage from "./pages/LoginPage";
@@ -15,29 +15,27 @@ const CounterPage = lazy(() => import("./pages/ExercisesPage/CounterPage"));
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
 
-          <Route path="articles" element={<ArticlesPage />} />
+        <Route path="articles" element={<ArticlesPage />} />
 
-          <Route path="articles/:articleId" element={<SingleArticlePage />}>
-            <Route path="comments" element={<CommentsPage />} />
-          </Route>
-
-          <Route path="login" element={<LoginPage />} />
-
-          <Route path="exercises" element={<ExercisesPage />}>
-            <Route index element={<Navigate to="products" />} />
-            <Route path="products" element={<ProductsPage />} />
-            <Route path="counter" element={<CounterPage />} />
-          </Route>
-
-          <Route path="*" element={<NotFoundPage />} />
+        <Route path="articles/:articleId" element={<SingleArticlePage />}>
+          <Route path="comments" element={<CommentsPage />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
+
+        <Route path="login" element={<LoginPage />} />
+
+        <Route path="exercises" element={<ExercisesPage />}>
+          <Route index element={<Navigate to="products" />} />
+          <Route path="products" element={<ProductsPage />} />
+          <Route path="counter" element={<CounterPage />} />
+        </Route>
+
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 };
 
