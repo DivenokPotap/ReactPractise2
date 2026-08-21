@@ -1,0 +1,48 @@
+@import-normalize;
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+p {}
+
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+nav {
+  &:not(:last-child)>a {
+    margin-right: 10px;
+  }
+
+  margin-right: 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+input {
+  border: 1px solid;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+button {
+  color: #fff;
+  background-color: #80fb;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
