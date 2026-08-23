@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button";
 
 export const ArticlesSearch = ({ onSubmitSearch, handleReset }) => {
+  
   return (
     <section className="input-group mb-3" style={{ marginBottom: "20px" }}>
       <form onSubmit={onSubmitSearch}>

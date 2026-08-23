@@ -1,14 +1,12 @@
-import { useCallback, useState } from "react";
-import { useSearchParams } from "react-router";
-
-import { useFetch } from "@/hooks/useFetch";
-import { getArticles } from "@/services/articlesServices";
-
 import { Button } from "../Button";
 import { ArticlesItem } from "./ArticlesItem";
 import { ArticlesSearch } from "./ArticlesSearch";
 import { ArticlesLoader } from "./ArticlesLoader";
 import { ArticlesError } from "./ArticlesError/ArticlesError";
+import { getArticles } from "@/services/articlesServices";
+import { useState } from "react";
+import { useCallback } from "react";
+import { useFetch } from "@/hooks/useFetch";
 
 const fetchStatus = {
   Idle: "idle",
@@ -19,10 +17,7 @@ const fetchStatus = {
 
 export const Articles = () => {
   const [page, setPage] = useState(1);
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const query = searchParams.get("search") ?? "";
-  console.log(query);
+  const [query, setQuery] = useState("");
 
   const fetchArticles = useCallback(
     () => getArticles(query, page),
@@ -31,20 +26,13 @@ export const Articles = () => {
 
   const { data, status } = useFetch(fetchArticles);
 
-  const handleSubmitSearch = (e) => {
-    const articleSearch = e.target.elements.search.value.trim();
-    console.log("🚀 ~ handleSubmitSearch ~ articleSearch:", articleSearch);
+   const handleReset = () => {
+     setQuery("");
+     setPage(1);
+   };
 
-    if (!articleSearch) {
-      alert("Empty search");
-      return;
-    }
-
-    e.preventDefault();
-    console.log(articleSearch);
-    searchParams.set("search", articleSearch);
-    searchParams.set("page", 1);
-    setSearchParams({ search: articleSearch, page: 1 });
+  const handleSearch = (query) => {
+    setQuery(query);
     setPage(1);
   };
 
@@ -64,7 +52,7 @@ export const Articles = () => {
 
   return (
     <>
-      <ArticlesSearch onSubmitSearch={handleSubmitSearch} />
+      <ArticlesSearch onSubmitSearch={handleSearch} handleReset={handleReset} />
       <div className="container-fluid g-0">
         <div className="row">
           {articles?.map((article) => (

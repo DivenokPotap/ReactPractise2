@@ -2,14 +2,14 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { FiPlus } from "react-icons/fi";
 import { useSearchParams } from "react-router";
 
-import { InStockFilter } from "../../../components/Products/InStockFilter";
-import { SearchInput } from "../../../components/Products/SearchInput";
-import { CategoryFilter } from "../../../components/Products/CategoryFilter";
-import productsJson from "../../../data/products.json";
-import { ProductsList } from "../../../components/Products/ProductsList";
-import { Modal } from "../../../components/Modal/Modal";
-import { Cart } from "../../../components/Cart/Cart";
-import { getLocalData } from "../../../helpers/getLocalData";
+import { InStockFilter } from "@/components/Products/InStockFilter";
+import { SearchInput } from "@/components/Products/SearchInput";
+import { CategoryFilter } from "@/components/Products/CategoryFilter";
+import productsJson from "@/data/products.json";
+import { ProductsList } from "@/components/Products/ProductsList";
+import { Modal } from "@/components/Modal/Modal";
+import { Cart } from "@/components/Cart/Cart";
+import { getLocalData } from "@/helpers/getLocalData";
 
 const PRODUCTS_LOCALSTORAGE_KEY = "products";
 
